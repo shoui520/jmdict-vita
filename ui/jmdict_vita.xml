@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resource version="0.1" type="normal" id="jmdict_vita">
+  <pagetable>
+    <page id="page_main">
+      <plane style="style_background" id="background">
+        <layout_hint size="960, 544" />
+
+        <text style="style_title" id="title_text">
+          <layout_hint size="280, 44" pos="-300, 238" />
+        </text>
+
+        <text style="style_hint" id="hint_text">
+          <layout_hint size="400, 30" pos="80, 238" />
+        </text>
+
+        <button sound="_common_sound_button_enter" style="_common_default_style_button"
+                id="sources_button">
+          <layout_hint size="130, 36" pos="375, 238" />
+        </button>
+
+        <text_box style="style_search_box" id="search_box" auto_scroll="1"
+                  ime_type="0" edit_mode="1" paste_mode="1" edit_auto_transition_mode="0">
+          <layout_hint size="880, 58" pos="0, 174" />
+        </text_box>
+
+        <text style="style_status" id="status_text">
+          <layout_hint size="880, 28" pos="0, 126" />
+        </text>
+
+        <rich_text style="style_results" w_sbar_v="result_scrollbar" id="result_text">
+          <layout_hint size="880, 350" pos="0, -70" />
+          <scrollbar style="_common_default_style_scrollbar" id="result_scrollbar">
+            <layout_hint size="5, 0" />
+          </scrollbar>
+        </rich_text>
+      </plane>
+    </page>
+  </pagetable>
+
+  <templatetable />
+
+  <styletable>
+    <style_plane color="0.035, 0.055, 0.09, 1" planeobj="background_obj" id="style_background">
+      <planeobj id="background_obj" />
+    </style_plane>
+
+    <style_text textobj="title_obj" id="style_title">
+      <textobj font_size="32" bold="1" color="0.92, 0.96, 1, 1" align_x="0" align_y="1"
+               text_align="1" ellipsis="1" id="title_obj" />
+    </style_text>
+
+    <style_text textobj="hint_obj" id="style_hint">
+      <textobj font_size="18" color="0.58, 0.68, 0.82, 1" align_x="2" align_y="1"
+               text_align="1" ellipsis="1" id="hint_obj" />
+    </style_text>
+
+    <style_text textobj="status_obj" id="style_status">
+      <textobj font_size="17" color="0.56, 0.69, 0.88, 1" align_x="0" align_y="1"
+               text_align="1" ellipsis="1" id="status_obj" />
+    </style_text>
+
+    <style_text_box bottom_margin="8" color="1, 1, 1, 1" glowobj="search_glow"
+                    sound="_common_sound_text_box" right_margin="12" top_margin="8"
+                    left_margin="12" textobj="search_text" planeobj="search_plane" id="style_search_box">
+      <textobj font_size="25" color="1, 1, 1, 1" align_y="1" align_x="0"
+               text_align="1" line_pitch="40" ellipsis="1" id="search_text" />
+      <planeobj texture0="_common_texture_text_box" id="search_plane" />
+      <planeobj texture0="_common_texture_checkbox_textbox_glow" blend="2" id="search_glow" />
+    </style_text_box>
+
+    <style_rich_text bg_obj="results_background" id="style_results">
+      <planeobj color="0.065, 0.085, 0.125, 1" id="results_background" />
+    </style_rich_text>
+  </styletable>
+
+  <stringtable />
+  <texturetable />
+  <filetable />
+</resource>

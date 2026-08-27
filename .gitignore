@@ -1,0 +1,10 @@
+build/
+agents/
+*.elf
+*.velf
+*.vpk
+eboot.bin
+param.sfo
+ui/jmdict_vita.rco
+tools/__pycache__/
+tests/__pycache__/
