@@ -2,7 +2,7 @@ TARGET          := jmdict_vita
 TITLE_ID        := JMDV00001
 APP_NAME        := JMdict Vita
 APP_VERSION     := 01.00
-VITASDK         ?= /home/shoui/vitasdk
+VITASDK         ?= $(HOME)/vitasdk-vcm-paf
 PREFIX          := $(VITASDK)/bin/arm-vita-eabi
 CXX             := $(PREFIX)-g++
 OBJCOPY         := $(PREFIX)-objcopy
@@ -20,6 +20,10 @@ JMNEDICT_SOURCE := $(SOURCE_DIR)/JMnedict.xml.gz
 DICT_BIN        := $(BUILD_DIR)/jmdict_vita.bin
 RCO             := $(BUILD_DIR)/jmdict_vita.rco
 ICON            := assets/sce_sys/icon0.png
+SPLASH          := assets/sce_sys/pic0.png
+LIVEAREA_DIR    := assets/sce_sys/livearea/contents
+LIVEAREA_FILES  := $(LIVEAREA_DIR)/bg0.png $(LIVEAREA_DIR)/default_gate.png \
+                   $(LIVEAREA_DIR)/template.xml
 ELF             := $(BUILD_DIR)/$(TARGET).elf
 STRIPPED_ELF    := $(BUILD_DIR)/$(TARGET).stripped.elf
 VELF            := $(BUILD_DIR)/$(TARGET).velf
@@ -99,9 +103,13 @@ $(DICT_BIN): tools/convert_edrdg.py \
 	  --jmnedict $(JMNEDICT_SOURCE) \
 	  --output $@
 
-$(VPK): $(EBOOT) $(PARAM_SFO) $(RCO) $(DICT_BIN) $(ICON) licenses/EDRDG.txt
+$(VPK): $(EBOOT) $(PARAM_SFO) $(RCO) $(DICT_BIN) $(ICON) $(SPLASH) $(LIVEAREA_FILES) licenses/EDRDG.txt
 	$(VITA_PACK_VPK) -s $(PARAM_SFO) -b $(EBOOT) \
 	  -a $(ICON)=sce_sys/icon0.png \
+	  -a $(SPLASH)=sce_sys/pic0.png \
+	  -a $(LIVEAREA_DIR)/bg0.png=sce_sys/livearea/contents/bg0.png \
+	  -a $(LIVEAREA_DIR)/default_gate.png=sce_sys/livearea/contents/default_gate.png \
+	  -a $(LIVEAREA_DIR)/template.xml=sce_sys/livearea/contents/template.xml \
 	  -a $(RCO)=jmdict_vita.rco \
 	  -a $(DICT_BIN)=dictionary/jmdict_vita.bin \
 	  -a licenses/EDRDG.txt=licenses/EDRDG.txt \
